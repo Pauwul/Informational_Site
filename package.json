@@ -1,13 +1,16 @@
 {
   "dependencies": {
+    "express": "^4.18.2",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.20"
   },
   "name": "informational_site",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "express": "nodemon ExpressApp.js",    
+    "nodejs": "nodemon NodejsApp.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,6 @@
     "url": "https://github.com/Pauwul/Informational_Site/issues"
   },
   "homepage": "https://github.com/Pauwul/Informational_Site#readme",
+  "devDependencies": {},
   "description": ""
 }
