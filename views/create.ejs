@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=  title%></title>
+</head>
+<body>
+    
+    <nav>
+        <div class=" site-title ">
+            <a href="/"><h1>Back to main blog</h1></a>
+            <p>A pauwul™ website </p>
+            <p><small>Not actually trademarked</small></p>
+        </div>
+
+        <ul>
+            <li><a href="/">Blogy</a></li>
+            <li><a href="/about">About :D</a></li>
+            <li><a href="/blogs/create">Create</a></li>
+        </ul>
+    </nav>
+    
+    <div class="CREATE-BLOG content">
+        <form>
+            <label for="title">Blog title</label>
+            <input type="text" id="title" required>
+            <label for="snippet">Blog snippet:</label>
+            <input type="text" id="snippet" required>
+            <label for="body">Blog body:</label>
+            <textarea name="body" id="" cols="30" rows="10"></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
