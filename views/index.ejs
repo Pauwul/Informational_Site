@@ -1,37 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%=  title%></title>
-</head>
+<%- include('./partials/head.ejs')%>
 <body>
     
-    <nav>
-        <div class=" site-title ">
-            <a href="/"><h1>Back to main blog</h1></a>
-            <p>A pauwul™ website </p>
-            <p><small>Not actually trademarked</small></p>
-        </div>
-
-        <ul>
-            <li><a href="/">Blogy</a></li>
-            <li><a href="/about">About :D</a></li>
-            <li><a href="/blogs/create">New blog</a></li>
-        </ul>
-    </nav>
-    
+    <!-- ejs partials -->
+    <%- include('./partials/nav.ejs') %>
     <div class="blogs content">
         <h2>All blogs</h2>
 
         <% if(blogs.length >0) { %>
-            <% blogs.forEach(blogs =>{ %>
+            <% blogs.forEach(blog =>{ %>
 
-                <h3 class="title"><% blogs.title %></h3>
-                <p class="snippet"><% blogs.snippet %></p>
+                <h3 class="title"><%= blog.title %></h3>
+                <p class="snippet"><%= blog.snippet %></p>
             <% }) %>
-        <% }%>
+        <% } else {%>
+             <p> No blogs to display</p>
+        <% } %>
     </div>
 </body>
 </html>

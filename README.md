@@ -4,5 +4,6 @@
 
 - Basic Nodejs file sistem, routing and servers
 - Requests and Responses
-- How to work with express  
-- The ejs view engine
+- How to work with express
+- The ejs view engine, which enables server side rendering
+- ejs partial templates

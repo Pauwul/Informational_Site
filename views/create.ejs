@@ -1,26 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=  title%></title>
-</head>
+    <%- include('./partials/head.ejs')%>
 <body>
     
-    <nav>
-        <div class=" site-title ">
-            <a href="/"><h1>Back to main blog</h1></a>
-            <p>A pauwul™ website </p>
-            <p><small>Not actually trademarked</small></p>
-        </div>
+    <%- include('./partials/nav.ejs') %>
 
-        <ul>
-            <li><a href="/">Blogy</a></li>
-            <li><a href="/about">About :D</a></li>
-            <li><a href="/blogs/create">Create</a></li>
-        </ul>
-    </nav>
     
     <div class="CREATE-BLOG content">
         <form>
