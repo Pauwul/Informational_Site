@@ -1,7 +1,7 @@
 // Express implementation
 
 const express = require("express");
-
+const morgan = require("morgan");
 // express app
 const app = express();
 
@@ -15,6 +15,29 @@ app.set("view engine", "ejs"); // defaults to views folder
 // could be useful for web sockets
 
 app.listen(3000);
+
+// // middlewware
+
+// app.use((req, res, next) => {
+//   console.log("new request made:");
+//   console.log("host:", req.hostname);
+//   console.log("path:", req.path);
+//   console.log("method:", req.method);
+//   // if you don't put next(), it hangs, not knowing what to do NEXT
+//   next();
+// });
+
+// app.use((req, res, next) => {
+//   console.log("move to the next middleware:");
+//   // if you don't put next(), it hangs, not knowing what to do NEXT
+//   next();
+// });
+
+app.use(morgan("dev"));
+app.use(morgan("tiny"));
+
+// run static files,like css or js
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   //the express way
