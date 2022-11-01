@@ -5,15 +5,15 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const Blog = require("./models/blog");
 const path = require("path");
-
+require("dotenv").config();
 // express app
 const app = express();
 // Conect to db
-const dbURI =
-  "mongodb+srv://paulica:1918@nodedb.7mv4gsb.mongodb.net/Informational_Site?retryWrites=true&w=majority";
+console.log(process.env.MONGO_URI);
+
 // this is async
 mongoose
-  .connect(dbURI)
+  .connect(process.env.MONGO_URI)
   .then((result) => app.listen(3000))
   .catch((err) => console.log(err));
 
