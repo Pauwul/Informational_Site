@@ -2,19 +2,28 @@
 
 const express = require("express");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
+const Blog = require("./models/blog");
+const path = require("path");
+
 // express app
 const app = express();
+// Conect to db
+const dbURI =
+  "mongodb+srv://paulica:1918@nodedb.7mv4gsb.mongodb.net/Informational_Site?retryWrites=true&w=majority";
+// this is async
+mongoose
+  .connect(dbURI)
+  .then((result) => app.listen(3000))
+  .catch((err) => console.log(err));
 
 // register view engine
-
 app.set("view engine", "ejs"); // defaults to views folder
 // alternatively, for custome view folder:
 // app.set('views', 'myviews');
 
 // this returns an instance of  the server,
 // could be useful for web sockets
-
-app.listen(3000);
 
 // // middlewware
 
@@ -37,8 +46,49 @@ app.use(morgan("dev"));
 app.use(morgan("tiny"));
 
 // run static files,like css or js
-app.use(express.static("public"));
 
+app.use(express.static("public"));
+app.use("/blogs", express.static(path.join(__dirname, "public")));
+
+// mongoose and mongo sandbox routes
+app.get("/add-blog", (req, res) => {
+  const blog = new Blog({
+    title: "new blog",
+    snippet: " about his blog",
+    body: "more about my blog",
+  });
+
+  blog
+    .save()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/all-blocks", (req, res) => {
+  Blog.find()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/single-blog", (req, res) => {
+  Blog.findById("6360ec588904c371134008c8")
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// routes
 app.get("/", (req, res) => {
   //the express way
 
