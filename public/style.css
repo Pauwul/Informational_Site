@@ -1,106 +1,159 @@
-    
- @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,100&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,100&display=swap');
 
-/* this css has been kindly stolen from a Net Ninja Nodejs course :D */
- body{
-    max-width: 1200px;
-    /* centers the content within the body */
-    margin: 20px auto;
-    padding: 0 20px;
-    font-family: 'Noto Serif', serif;
-    display: flex;
-    flex-direction: column;
-    align-items:stretch;
-  }
-  p, h1, h2, h3, a, ul{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: #222;
-  }
-  /* nav & footer styles */
-  nav{
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 60px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    text-transform: uppercase;
-  }
-  nav ul{
-      justify-content: space-between;
-    align-items: flex-end;
-}
-nav li{
-    list-style-type: none;
-    margin-left: 20px;
-}
-nav h1{
-    font-size: 3em;
-}
-nav p, nav a{
-    color: #777;
-    font-weight: 300;
-}
-footer{
-    color: #777;
-    text-align: center;
-    margin: 80px auto 20px;
-}
-h2{
-    margin-bottom: 40px;
-}
-h3{
-    text-transform: capitalize;
-    margin-bottom: 8px;
-  }
-  
-  .content {
-    display:grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto; 
-    column-gap: 10px;
-    row-gap: 15px;
-    margin: 20px;
+    /* this css has been kindly stolen from a Net Ninja Nodejs course :D */
+    html {
+      height: 100%;
     }
-    .content *{
+
+    body {
+      /* centers the content within the body */
+      font-family: 'Noto Serif', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      backdrop-filter: blur(5px);
+      min-height: 100%;
+      height: 100vh;
+      padding: 0;
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    a,
+    ul {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: #222;
+    }
+
+    /* nav & footer styles */
+    nav {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 60px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    nav li {
+      list-style-type: none;
+      margin-left: 20px;
+    }
+
+    nav h1 {
+      font-size: 3em;
+    }
+
+    nav p,
+    nav a {
+      color: #777;
+      font-weight: 300;
+    }
+
+
+    footer {
+      color: #777;
+      text-align: center;
+      margin: 80px auto 20px;
+    }
+
+    h2 {
+      margin-bottom: 40px;
+    }
+
+    h3 {
+      text-transform: capitalize;
+      margin-bottom: 8px;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: auto;
+      column-gap: 10px;
+      row-gap: 15px;
+      margin: 20px;
+    }
+
+    .content * {
       padding: 15px;
     }
 
     /* index styles */
-  /* details styles */
-  /* create styles */
-  .create-blog form{
+    /* details styles */
+    /* create styles */
+    .create-blog form {
       max-width: 400px;
       margin: 0 auto;
 
     }
-    .create-blog input,
-    .create-blog textarea{
-        display: block;
-        width: 100%;
-        margin: 10px 0;
-        padding: 8px;
-    }
-    .create-blog label{
-        display: block;
-        display: flex;
-    margin-top: 24px;
-  }
-  textarea{
-    height: 120px;
-  }
-  .create-blog button{
-    margin-top: 20px;
-    background: crimson;
-    color: white;
-    padding: 6px;
-    border: 0;
-    font-size: 1.2em;
-    cursor: pointer;
-  }
 
-  /* blog title */
-.blog-title{
-  text-align: center;
-}  
+    .create-blog input,
+    .create-blog textarea {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+
+    .create-blog label {
+      display: block;
+      display: flex;
+      margin-top: 24px;
+    }
+
+    textarea {
+      height: 120px;
+    }
+
+    .create-blog button {
+      margin-top: 20px;
+      background: crimson;
+      color: white;
+      padding: 6px;
+      border: 0;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+
+    /* blog title */
+    .blog-title {
+      text-align: center;
+    }
+
+    .card {
+      /* border: #222 solid 2px; */
+      border-radius: 10px;
+      background-color: rgba(0, 0, 255, .1);
+    }
+
+    .card:hover {
+      background-color: rgba(0, 0, 255, .5);
+    }
+
+
+    html, body{
+      min-height: 100%;
+      min-height: 100vh;
+      overflow: auto; 
+    }
+    html{
+      background: rgba(139, 58, 225, 0.2);
+
+    }
