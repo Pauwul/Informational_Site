@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const Blog = require("./models/blog");
 const path = require("path");
+const { render } = require("express/lib/response");
 require("dotenv").config();
 // express app
 const app = express();
@@ -103,10 +104,30 @@ app.post('/blogs', (req,res)=>{
     })
 })
 
-
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Create a new blog" });
 });
+
+// get a single id
+app.get('/blogs/:id', (req,res)=>{
+  const id = req.params.id;
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    // Yes, it's a valid ObjectId, proceed with `findById` call.
+
+    Blog.findById(id)
+      .then(result =>{
+        res.render('details', { blogs: result, title: 'Blog Details' });
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+  }
+  else {
+    console.log("weird id fr fr");
+  }
+})
+
+
 
 // 404
 
