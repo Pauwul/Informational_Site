@@ -5,11 +5,11 @@
     <body>
 
         <%- include('./partials/nav.ejs') %>
-            <div class="details content">
+            <div class="details ">
                 <h2>
                     <%= blog.title %>
                 </h2>
-                <div class="content">
+                <div class="">
                     <p>
                         <%= blog.body %>
                     </p>
@@ -19,6 +19,22 @@
 
             <%- include('./partials/footer.ejs') %>
 
-    </body>
+        <script>
+            const trashcan = document.querySelector('a.delete');
+
+            trashcan.addEventListener('click', (e)=>{
+                const endpoint = `/blogs/${trashcan.dataset.doc}`;
+                // ajax, we can't send a response, we need to send some json data( on the server)
+                fetch(endpoint, {
+                    method: 'DELETE'
+                })
+                // response is the json we gave from the server
+                .then((response)=>response.json())
+                // redirect from the frontend
+                .then((data)=> window.location.href= data.redirect)
+                .catch(err =>console.log(err))
+            })
+        </script>
+        </body>
 
 </html>

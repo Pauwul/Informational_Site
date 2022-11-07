@@ -21,13 +21,12 @@ mongoose
 // register view engine
 app.set("view engine", "ejs"); // defaults to views folder
 
-
 // middleware and static files,like css or js
 
 app.use(express.static("public"));
 app.use("/blogs", express.static(path.join(__dirname, "public")));
 // middleware bit necessary for the req.body to work
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(morgan("tiny"));
 // mongoose and mongo sandbox routes
@@ -92,39 +91,44 @@ app.get("/blogs", (req, res) => {
     });
 });
 
-app.post('/blogs', (req,res)=>{
-  const blog = new Blog(req.body)
-  blog.save()
-    .then((result)=>{
-      res.redirect('/blogs')
+app.post("/blogs", (req, res) => {
+  const blog = new Blog(req.body);
+  blog
+    .save()
+    .then((result) => {
+      res.redirect("/blogs");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: "/blogs" });
     })
-    .catch((err)=>{
-      console.log(err)
-    })
-})
+    .catch((err) => console.log(err));
+});
 
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Create a new blog" });
 });
 
-
 // get a single id
-app.get('/blogs/:id', (req,res)=>{
+app.get("/blogs/:id", (req, res) => {
   const id = req.params.id;
-    // Yes, it's a valid ObjectId, proceed with `findById` call.
+  // Yes, it's a valid ObjectId, proceed with `findById` call.
 
-    Blog.findById(id)
-      .then(result =>{
-        res.render('details', { blog: result, title: 'Blog Details' });
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
-
-})
-
-
+  Blog.findById(id)
+    .then((result) => {
+      res.render("details", { blog: result, title: "Blog Details" });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 // 404
 
