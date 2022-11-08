@@ -5,6 +5,9 @@ const blogController = require("../controllers/blogController");
 // routes
 
 // blog routes
+
+router.get("/blogs", blogController.blog_index);
+
 router.get("/add-blog", (req, res) => {
   const blog = new Blog({
     title: "new blog",
@@ -53,43 +56,13 @@ router.get("/blogs", (req, res) => {
     });
 });
 
-router.post("/blogs", (req, res) => {
-  const blog = new Blog(req.body);
-  blog
-    .save()
-    .then((result) => {
-      res.redirect("/blogs");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.post("/blogs", blogController.blog_create_post);
 
-router.delete("/blogs/:id", (req, res) => {
-  const id = req.params.id;
-  Blog.findByIdAndDelete(id)
-    .then((result) => {
-      res.json({ redirect: "/blogs" });
-    })
-    .catch((err) => console.log(err));
-});
+router.delete("/blogs/:id", blogController.blog_delete);
 
-router.get("/blogs/create", (req, res) => {
-  res.render("create", { title: "Create a new blog" });
-});
+router.get("/blogs/create", blogController.blog_create_get);
 
 // get a single id
-router.get("/blogs/:id", (req, res) => {
-  const id = req.params.id;
-  // Yes, it's a valid ObjectId, proceed with `findById` call.
-
-  Blog.findById(id)
-    .then((result) => {
-      res.render("details", { blog: result, title: "Blog Details" });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.get("/blogs/:id", blogController.blog_details);
 
 module.exports = router;
